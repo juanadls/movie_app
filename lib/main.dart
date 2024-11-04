@@ -18,8 +18,10 @@ class MyApp extends StatelessWidget {
         "home": (_) => const HomeScreen(),
         "details": (_) => const DetailsScreens()
       },
-      theme: ThemeData.light()
-          .copyWith(appBarTheme: const AppBarTheme(color: Colors.amber)),
+      theme: ThemeData.light().copyWith(
+          appBarTheme: const AppBarTheme(
+        color: Colors.amber,
+      )),
       home: const HomeScreen(),
     );
   }
