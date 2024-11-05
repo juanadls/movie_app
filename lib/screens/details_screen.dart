@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:movie_app/widgets/widgets.dart';
 
 class DetailsScreens extends StatelessWidget {
   const DetailsScreens({super.key});
@@ -6,15 +7,14 @@ class DetailsScreens extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     //final String movie =
-        //ModalRoute.of(context)?.settings.arguments.toString() ?? "no-movie";
+    //ModalRoute.of(context)?.settings.arguments.toString() ?? "no-movie";
     return Scaffold(
       body: CustomScrollView(
         slivers: [
           _CustomAppBar(),
           SliverList(
-              delegate: SliverChildListDelegate([
-            const _PosterAndTitle(),
-          ]))
+              delegate: SliverChildListDelegate(
+                  [_PosterAndTitle(), _Overview(), const CastingCards()]))
         ],
       ),
     );
@@ -23,6 +23,7 @@ class DetailsScreens extends StatelessWidget {
 
 class _CustomAppBar extends StatelessWidget {
   static const String _asset = "assets/no-image.jpg";
+
   @override
   Widget build(BuildContext context) {
     return SliverAppBar(
@@ -37,6 +38,7 @@ class _CustomAppBar extends StatelessWidget {
           width: double.infinity,
           alignment: Alignment.bottomCenter,
           color: Colors.black45,
+          padding: const EdgeInsets.only(bottom: 10),
           child: const Text(
             "movie.title",
             style: TextStyle(fontSize: 16),
@@ -53,8 +55,6 @@ class _CustomAppBar extends StatelessWidget {
 }
 
 class _PosterAndTitle extends StatelessWidget {
-  const _PosterAndTitle({super.key});
-
   static const String _asset = "assets/no-image.jpg";
 
   @override
@@ -110,6 +110,18 @@ class _PosterAndTitle extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+}
+
+class _Overview extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+      child: Text("Culpa commodo veniam nulla enim.",
+          textAlign: TextAlign.justify,
+          style: Theme.of(context).textTheme.titleMedium),
     );
   }
 }
