@@ -1,0 +1,5 @@
+class MoviesProvider {
+  getOnDisplayMovie(){
+    
+  }
+}
