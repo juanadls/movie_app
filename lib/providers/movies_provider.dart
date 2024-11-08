@@ -1,16 +1,20 @@
 import 'package:flutter/material.dart';
-import 'dart:convert' as convert;
 
 import 'package:http/http.dart' as http;
+import 'package:movie_app/models/movie.dart';
 import 'package:movie_app/models/now_playing_response.dart';
 
 class MoviesProvider extends ChangeNotifier {
-  final String _baseUrl = "api.themoviedb.org";
-  final String _apiKey = "86462bcf105275167165c76f625dac3d";
-  final String _language = "es-ES";
   MoviesProvider() {
     getOnDisplayMovies();
   }
+
+  final String _baseUrl = "api.themoviedb.org";
+  final String _apiKey = "86462bcf105275167165c76f625dac3d";
+  final String _language = "es-ES";
+
+  List<Movie> onDisplayMovies = [];
+
   getOnDisplayMovies() async {
     final url = Uri.https(
       _baseUrl,
@@ -26,8 +30,10 @@ class MoviesProvider extends ChangeNotifier {
     final response = await http.get(url);
     if (response.statusCode == 200) {
       if (response.body.isNotEmpty) {
-        final playingResponse =
+        final nowPlayingResponse =
             NowPlayingResponse.fromJson(response.body as Map<String, dynamic>);
+        onDisplayMovies = nowPlayingResponse.results;
+        notifyListeners();
       }
     } else {}
   }
