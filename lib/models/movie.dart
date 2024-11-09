@@ -63,13 +63,13 @@ class Movie {
       );
 }
 
-enum OriginalLanguage { EN, ES, FR, JA }
+enum OriginalLanguage { en, es, fr, ja }
 
 final originalLanguageValues = EnumValues({
-  "en": OriginalLanguage.EN,
-  "es": OriginalLanguage.ES,
-  "fr": OriginalLanguage.FR,
-  "ja": OriginalLanguage.JA
+  "en": OriginalLanguage.en,
+  "es": OriginalLanguage.es,
+  "fr": OriginalLanguage.fr,
+  "ja": OriginalLanguage.ja
 });
 
 class EnumValues<T> {
