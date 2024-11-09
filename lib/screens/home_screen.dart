@@ -8,17 +8,19 @@ import '../widgets/card_swiper.dart';
 import '../widgets/movie_slider.dart';
 
 class HomeScreen extends StatelessWidget {
+  const HomeScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     final moviesProvider = Provider.of<MoviesProvider>(context);
 
     return Scaffold(
         appBar: AppBar(
-          title: Text('Películas en cines'),
+          title: const Text('Películas en cines'),
           elevation: 0,
           actions: [
             IconButton(
-              icon: Icon(Icons.search_outlined),
+              icon: const Icon(Icons.search_outlined),
               onPressed: () =>
                   showSearch(context: context, delegate: MovieSearchDelegate()),
             )

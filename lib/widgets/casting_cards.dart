@@ -1,5 +1,6 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 
 import 'package:provider/provider.dart';
 
@@ -9,7 +10,7 @@ import '../providers/movies_provider.dart';
 class CastingCards extends StatelessWidget {
   final int movieId;
 
-  const CastingCards(this.movieId);
+  const CastingCards(this.movieId, {super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors, prefer_is_empty
+
 import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
 
@@ -12,8 +14,8 @@ class CardSwiper extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
 
-    if (this.movies.length == 0) {
-      return Container(
+    if (movies.length == 0) {
+      return SizedBox(
         width: double.infinity,
         height: size.height * 0.5,
         child: Center(
@@ -22,7 +24,7 @@ class CardSwiper extends StatelessWidget {
       );
     }
 
-    return Container(
+    return SizedBox(
       width: double.infinity,
       height: size.height * 0.5,
       child: Swiper(
@@ -43,7 +45,7 @@ class CardSwiper extends StatelessWidget {
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(20),
                 child: FadeInImage(
-                  placeholder: AssetImage('assets/no-image.jpg'),
+                  placeholder: const AssetImage('assets/no-image.jpg'),
                   image: NetworkImage(movie.fullPosterImg),
                   fit: BoxFit.cover,
                 ),
