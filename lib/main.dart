@@ -1,49 +1,38 @@
 import 'package:flutter/material.dart';
-import 'package:movie_app/providers/movies_provider.dart';
-import 'package:movie_app/screens/screens.dart';
+import 'package:movie_app/screens/details_screen.dart';
+
 import 'package:provider/provider.dart';
 
-void main() {
-  runApp(const AppState());
-}
+import 'providers/movies_provider.dart';
+import 'screens/home_screen.dart';
+
+void main() => runApp(AppState());
 
 class AppState extends StatelessWidget {
-  const AppState({super.key});
-
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(
-          create: (BuildContext context) {
-            return MoviesProvider();
-          },
-          lazy: false,
-        )
+        ChangeNotifierProvider(create: (_) => MoviesProvider(), lazy: false),
       ],
-      child: const MyApp(),
+      child: MyApp(),
     );
   }
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Movie App Flutter Demo',
-      initialRoute: "home",
+      title: 'Películas',
+      initialRoute: 'home',
       routes: {
-        "home": (_) => const HomeScreen(),
-        "details": (_) => const DetailsScreens()
+        'home': (_) => HomeScreen(),
+        'details': (_) => DetailsScreen(),
       },
-      theme: ThemeData.light().copyWith(
-          appBarTheme: const AppBarTheme(
-        color: Colors.amber,
-      )),
-      home: const HomeScreen(),
+      theme: ThemeData.light()
+          .copyWith(appBarTheme: AppBarTheme(color: Colors.indigo)),
     );
   }
 }
